@@ -8,73 +8,150 @@
     <title>Document</title>
 </head>
 <style>
+    #backgroundTest {
+        left: 550px;
+        top: 0px;
+        width: 800px;
+        height: 75px;
+        position: fixed;
+        z-index: 20;
+        background-color: white;
+    }
+
+    #check {
+        top: 10px;
+        left: 600px;
+        width: 150px;
+        height: 50px;
+        position: absolute;
+        z-index: 20;
+        text-align: center;
+        /* background-color: greenyellow; */
+    }
+
+    #title {
+        top: 10px;
+        left: 0px;
+        width: 280px;
+        height: 50px;
+        position: absolute;
+        z-index: 20;
+        font-family: Arial;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+        /* background-color: greenyellow; */
+    }
+
+    #line {
+        top: 65px;
+        left: 0px;
+        width: 725px;
+        height: 10px;
+        position: absolute;
+        z-index: 20;
+        text-align: center;
+        /* background-color: greenyellow; */
+    }
+
     #backgroundMondai1 {
         margin: auto;
-        top: 0px;
+        top: 100px;
         width: 800px;
         height: 500px;
         position: relative;
-        z-index: 20;
+        z-index: 10;
         /* background-color: lightblue; */
     }
 
     #questionMondai1 {
         margin: auto;
-        top: 100px;
+        top: 0px;
         width: 800px;
         height: 35px;
         position: relative;
-        z-index: 20;
+        z-index: 10;
         /* background-color: orangered; */
     }
 
-    /* #background0 {
-        margin: auto;
-        top: 100px;
-        width: 800px;
-        height: 85px;
-        position: relative;
-        z-index: 20;
-        background-color: orchid;
-    }
-
-    #background1 {
-        margin: auto;
-        top: 100px;
-        width: 800px;
-        height: 85px;
-        position: relative;
-        z-index: 20;
-        background-color: lightskyblue;
-    }
-
-    #background2 {
-        margin: auto;
-        top: 100px;
-        width: 800px;
-        height: 85px;
-        position: relative;
-        z-index: 20;
-        background-color: greenyellow;
-    } */
-
     .ABC {
         margin: auto;
-        top: 100px;
+        top: 0px;
         width: 800px;
         height: 85px;
         position: relative;
-        z-index: 20;
+        z-index: 10;
         /* background-color: orchid; */
+    }
+
+    .summit {
+        background-color: yellow;
+        border: 2px solid black;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        width: 100px;
+        transition-duration: 0.4s;
+        font-weight: bold;
+    }
+
+    .summit:hover {
+        background-color: green;
+        color: white;
+    }
+
+    .summit2 {
+        background-color: gray;
+        border: 2px solid black;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: not-allowed;
+        width: 100px;
+        transition-duration: 0.4s;
+        font-weight: bold;
+    }
+
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 2px;
+    }
+
+    .textHidden {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 </style>
 
 <body>
-    <div id="backgroundMondai1"></div>
-
-    <div id="check">
-        <div><button class="summit" onclick="check2()">CHECK</button></div>
+    <div id="backgroundTest">
+        <div id="title">第1回　模擬テスト</div>
+        <div id="line">
+            <hr>
+        </div>
+        <div id="check">
+            <!-- <div><button class="summit2" id="kakunin" onclick="check2()">CHECK</button></div> -->
+        </div>
     </div>
+    <div id="backgroundMondai1"></div>
     <script>
         let array1 = ["A.", "B.", "C.", "D."];
         let array2 = ["私は速くから彼女が働く<span style='color:blue'><u>姿</u></span>を見ていた",
@@ -178,6 +255,7 @@
         let ht = "";
         let i;
         let num;
+        let dem = 0;
         function getRandomArray() {
             let check;
             do {
@@ -222,6 +300,8 @@
                 ht = ht + a;
             }
             document.getElementById("backgroundMondai1").innerHTML = '<div id="questionMondai1">' + ht;
+            document.getElementById("check").innerHTML = '<button class="summit2" id="btn1" onclick="check2()">CHECK</button>';
+            document.getElementById("btn1").disabled = true;;
             testDisplay();
         }
         function displayAll(array1, array3, x, n) {
@@ -234,16 +314,16 @@
             let table = '<table border="0"> <tr><td style="width:20px">' + num + '. </td><td colspan="8">' + array2[x] + ' </td></tr>' +
                 '<td style="width:20px"> </td>';
             for (let i = 0; i < 4; i++) {
-                table += " <td style='width:20px'>" + array1[i] + "</td>" + "<td style='width:100px'> <div id=" + x + i + ">" + array3[c[i]] + "</div></td>";
+                table += " <td style='width:20px'>" + array1[i] + "</td>" + "<td style='width:135px'> <div id=" + x + i + ">" + array3[c[i]] + "</div></td>";
             }
-            table = table + '<td> <select id="' + chon + '" onchange="check(' + x + ')"> <option value=""></option>' +
+            table = table + '<td> <div id="select' + x + '"><select id="' + chon + '" onchange="check(' + x + ')"> <option value=""></option>' +
                 '<option value="A">A</option>' +
                 '<option value="B">B</option>' +
                 '<option value="C">C</option>' +
                 '<option value="D">D</option>' +
-                '</td>' +
-                '<td> <div id="' + kt + '" style="color: white;"></div> </td>' +
-                '<td> <div id="' + dapan + '" style="color: white;"></div> </td></table>';
+                '</td></div>' +
+                '<td> <div class="textHidden" id="' + kt + '" style="color: white;"></div> </td>' +
+                '<td> <div class="textHidden" id="' + dapan + '" style="color: white;"></div> </td></table>';
             let number = "result" + x;
             document.getElementById(number).innerHTML = table;
         }
@@ -263,6 +343,7 @@
             displayMondai(array4, 0);
         }
         function check(x) {
+            let mark = true;
             let index;
             let chon = "chon" + x;
             let kt = "check" + x;
@@ -321,15 +402,26 @@
                 document.getElementById(kt).innerHTML = 'NG';
             }
             document.getElementById(dapan).innerHTML = index;
+            for (let q = 0; q < kq.length; q++) {
+                let g = document.getElementById("chon" + q).value;
+                if (g == "") {
+                    mark = false;
+                    break;
+                }
+            }
+            if (mark == true) {
+                document.getElementById("check").innerHTML = '<button class="summit" onclick="check2()">CHECK</button>';
+            }
+
         }
         function check2() {
             for (x = 0; x < kq.length; x++) {
-                z = document.getElementById("dapan" + x).innerHTML;
-                k = document.getElementById("check" + x).innerHTML;
+                let z = document.getElementById("dapan" + x).innerHTML;
+                let k = document.getElementById("check" + x).innerHTML;
+
                 if (k == "正解") {
                     document.getElementById("check" + x).style.color = "red";
                     document.getElementById("check" + x).style.fontWeight = "bold";
-
                 }
                 else {
                     document.getElementById("check" + x).style.color = "black";
@@ -337,8 +429,10 @@
                 }
                 document.getElementById(x + z).style.color = "red";
                 document.getElementById(x + z).style.fontWeight = "bold"
+                document.getElementById("select" + x).innerHTML = "";
             }
-
+            document.getElementById("check").innerHTML = '<button class="summit2" id="btn1" onclick="check2()">CHECK</button>';
+            document.getElementById("btn1").disabled = true;;
         }
         displayMondai1();
     </script>
